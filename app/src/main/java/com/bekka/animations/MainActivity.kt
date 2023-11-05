@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
 import com.bekka.animations.data.DataProvider
 import com.bekka.animations.data.model.AnimationModel
+import com.bekka.animations.simple_animation.SimpleAnimationActivity
 import com.bekka.animations.ui.theme.AnimationsTheme
 
 class MainActivity : ComponentActivity() {
@@ -74,11 +75,17 @@ fun AnimationItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
+//                    context.startActivity(
+//                        Intent(context, AnimatedVisibilityActivity::class.java)
+//                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
+//                            putExtra("parameter", 1)
+//                        }
+//                    )
                     context.startActivity(
-                        Intent(context, AnimatedVisibilityActivity::class.java)
+                        Intent(context, SimpleAnimationActivity::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
-                            putExtra("parameter", 1)
-                        }
+                                putExtra("parameter", 1)
+                            }
                     )
                 }
                 .padding(vertical = 10.dp, horizontal = 12.dp),
