@@ -90,7 +90,7 @@ fun AnimatedVisibilityExample(isVisible: Boolean, onToggleVisibility: () -> Unit
             exit = fadeOut() + shrinkVertically()
         ) {
             Text(
-                text = "Tap to disappear",
+                text = "Here me out, I'm gonna disappear",
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.primary)
                     .padding(8.dp)
@@ -109,7 +109,7 @@ fun AnimatedVisibilityExample(isVisible: Boolean, onToggleVisibility: () -> Unit
 @Composable
 fun FloatAnimationExample() {
     var alpha by remember { mutableStateOf(1f) }
-    val animatedAlpha by animateFloatAsState(targetValue = alpha)
+    val animatedAlpha by animateFloatAsState(targetValue = alpha, label = "")
 
     Text(
         text = "Fade me",
@@ -157,13 +157,6 @@ fun SizeAnimationExample() {
             .background(Color.Blue)
             .clickable(onClick = { expanded = !expanded })
     ) {
-        // Box content here
-    }
-}
-
-@Composable
-fun AnimationsTheme(content: @Composable () -> Unit) {
-    MaterialTheme {
-        content()
+        Text(text = "Size change")
     }
 }

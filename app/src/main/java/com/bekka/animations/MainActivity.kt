@@ -33,9 +33,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
+import com.bekka.animations.content_size.ContentSizeAnimationActivity
 import com.bekka.animations.data.DataProvider
 import com.bekka.animations.data.model.AnimationModel
 import com.bekka.animations.simple_animation.SimpleAnimationActivity
+import com.bekka.animations.transition_animation.TransitionAnimationActivity
 import com.bekka.animations.ui.theme.AnimationsTheme
 
 class MainActivity : ComponentActivity() {
@@ -81,8 +83,20 @@ fun AnimationItem(
 //                            putExtra("parameter", 1)
 //                        }
 //                    )
+//                    context.startActivity(
+//                        Intent(context, SimpleAnimationActivity::class.java)
+//                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
+//                                putExtra("parameter", 1)
+//                            }
+//                    )
+//                    context.startActivity(
+//                        Intent(context, TransitionAnimationActivity::class.java)
+//                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
+//                                putExtra("parameter", 1)
+//                            }
+//                    )
                     context.startActivity(
-                        Intent(context, SimpleAnimationActivity::class.java)
+                        Intent(context, ContentSizeAnimationActivity::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
                                 putExtra("parameter", 1)
                             }
