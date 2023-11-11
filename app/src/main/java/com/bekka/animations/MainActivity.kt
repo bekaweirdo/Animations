@@ -35,10 +35,17 @@ import androidx.compose.ui.unit.sp
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
 import com.bekka.animations.content_size.ContentSizeAnimationActivity
 import com.bekka.animations.data.DataProvider
+import com.bekka.animations.data.DataProvider.ANIMATED_VISIBILITY
+import com.bekka.animations.data.DataProvider.CONTENT_SIZE_ANIMATION
+import com.bekka.animations.data.DataProvider.GESTURE_ANIMATION
+import com.bekka.animations.data.DataProvider.SIMPLE_ANIMATION
+import com.bekka.animations.data.DataProvider.TRANSITION_ANIMATION
 import com.bekka.animations.data.model.AnimationModel
+import com.bekka.animations.gesture.GestureAnimationActivity
 import com.bekka.animations.simple_animation.SimpleAnimationActivity
 import com.bekka.animations.transition_animation.TransitionAnimationActivity
 import com.bekka.animations.ui.theme.AnimationsTheme
+import kotlin.reflect.KClass
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,32 +83,7 @@ fun AnimationItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable {
-//                    context.startActivity(
-//                        Intent(context, AnimatedVisibilityActivity::class.java)
-//                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
-//                            putExtra("parameter", 1)
-//                        }
-//                    )
-//                    context.startActivity(
-//                        Intent(context, SimpleAnimationActivity::class.java)
-//                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
-//                                putExtra("parameter", 1)
-//                            }
-//                    )
-//                    context.startActivity(
-//                        Intent(context, TransitionAnimationActivity::class.java)
-//                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
-//                                putExtra("parameter", 1)
-//                            }
-//                    )
-                    context.startActivity(
-                        Intent(context, ContentSizeAnimationActivity::class.java)
-                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
-                                putExtra("parameter", 1)
-                            }
-                    )
-                }
+                .clickable { context.navigateToAnimation(optionName) }
                 .padding(vertical = 10.dp, horizontal = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -118,4 +100,23 @@ fun AnimationItem(
             )
         }
     }
+}
+
+private fun Context.navigateToAnimation(it: AnimationModel){
+    when(it.option){
+        ANIMATED_VISIBILITY -> navigateToSomewhere(AnimatedVisibilityActivity::class)
+        CONTENT_SIZE_ANIMATION -> navigateToSomewhere(ContentSizeAnimationActivity::class)
+        GESTURE_ANIMATION -> navigateToSomewhere(GestureAnimationActivity::class)
+        SIMPLE_ANIMATION -> navigateToSomewhere(SimpleAnimationActivity::class)
+        TRANSITION_ANIMATION -> navigateToSomewhere(TransitionAnimationActivity::class)
+    }
+}
+
+private fun <T: Any> Context.navigateToSomewhere(activity: KClass<T>){
+    startActivity(
+        Intent(this, activity.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).apply {
+                putExtra("parameter", 1)
+            }
+    )
 }

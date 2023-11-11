@@ -35,6 +35,9 @@
 
         <activity android:name=".content_size.ContentSizeAnimationActivity"
             android:theme="@style/Theme.Animations" />
+
+        <activity android:name=".gesture.GestureAnimationActivity"
+            android:theme="@style/Theme.Animations" />
     </application>
 
 </manifest>
