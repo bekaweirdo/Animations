@@ -38,6 +38,9 @@
 
         <activity android:name=".gesture.GestureAnimationActivity"
             android:theme="@style/Theme.Animations" />
+
+        <activity android:name=".animated_specs.AnimatedSpecsAnimationActivity"
+            android:theme="@style/Theme.Animations" />
     </application>
 
 </manifest>

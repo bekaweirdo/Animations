@@ -32,9 +32,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bekka.animations.animated_specs.AnimatedSpecsAnimationActivity
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
 import com.bekka.animations.content_size.ContentSizeAnimationActivity
 import com.bekka.animations.data.DataProvider
+import com.bekka.animations.data.DataProvider.ANIMATED_SPEC_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_VISIBILITY
 import com.bekka.animations.data.DataProvider.CONTENT_SIZE_ANIMATION
 import com.bekka.animations.data.DataProvider.GESTURE_ANIMATION
@@ -109,6 +111,7 @@ private fun Context.navigateToAnimation(it: AnimationModel){
         GESTURE_ANIMATION -> navigateToSomewhere(GestureAnimationActivity::class)
         SIMPLE_ANIMATION -> navigateToSomewhere(SimpleAnimationActivity::class)
         TRANSITION_ANIMATION -> navigateToSomewhere(TransitionAnimationActivity::class)
+        ANIMATED_SPEC_ANIMATION -> navigateToSomewhere(AnimatedSpecsAnimationActivity::class)
     }
 }
 

@@ -21,6 +21,7 @@ object DataProvider {
     const val GESTURE_ANIMATION = "Gesture Animation"
     const val SIMPLE_ANIMATION = "Simple Animation"
     const val TRANSITION_ANIMATION = "Transition Animation"
+    const val ANIMATED_SPEC_ANIMATION = "Animated Spec"
     const val PREVIOUS_NOTIFICATIONS = "Previous Notifications"
     const val SAVED_ITEMS = "Saved Items"
 
@@ -30,7 +31,7 @@ object DataProvider {
         AnimationModel(icon = Icons.Outlined.List, option = GESTURE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.AccountBox, option = SIMPLE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),
-        AnimationModel(icon = Icons.Outlined.Build, option = PREVIOUS_NOTIFICATIONS),
+        AnimationModel(icon = Icons.Outlined.Build, option = ANIMATED_SPEC_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Clear, option = SAVED_ITEMS),
         AnimationModel(icon = Icons.Outlined.Done, option = PREVIOUS_NOTIFICATIONS),
         AnimationModel(icon = Icons.Outlined.Lock, option = SAVED_ITEMS),
