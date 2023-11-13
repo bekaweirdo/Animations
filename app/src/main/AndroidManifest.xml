@@ -41,6 +41,9 @@
 
         <activity android:name=".animated_specs.AnimatedSpecsAnimationActivity"
             android:theme="@style/Theme.Animations" />
+
+        <activity android:name=".advanced_animated.AdvancedAnimationActivity"
+            android:theme="@style/Theme.Animations" />
     </application>
 
 </manifest>

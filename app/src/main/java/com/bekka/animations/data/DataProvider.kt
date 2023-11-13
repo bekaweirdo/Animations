@@ -22,7 +22,7 @@ object DataProvider {
     const val SIMPLE_ANIMATION = "Simple Animation"
     const val TRANSITION_ANIMATION = "Transition Animation"
     const val ANIMATED_SPEC_ANIMATION = "Animated Spec"
-    const val PREVIOUS_NOTIFICATIONS = "Previous Notifications"
+    const val ADVANCED_ANIMATION = "Advanced Animation"
     const val SAVED_ITEMS = "Saved Items"
 
     val optionsList = mutableListOf(
@@ -32,9 +32,9 @@ object DataProvider {
         AnimationModel(icon = Icons.Outlined.AccountBox, option = SIMPLE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Build, option = ANIMATED_SPEC_ANIMATION),
-        AnimationModel(icon = Icons.Outlined.Clear, option = SAVED_ITEMS),
-        AnimationModel(icon = Icons.Outlined.Done, option = PREVIOUS_NOTIFICATIONS),
+        AnimationModel(icon = Icons.Outlined.Clear, option = ADVANCED_ANIMATION),
+        AnimationModel(icon = Icons.Outlined.Done, option = SAVED_ITEMS),
         AnimationModel(icon = Icons.Outlined.Lock, option = SAVED_ITEMS),
-        AnimationModel(icon = Icons.Outlined.Create, option = PREVIOUS_NOTIFICATIONS)
+        AnimationModel(icon = Icons.Outlined.Create, option = SAVED_ITEMS)
     )
 }

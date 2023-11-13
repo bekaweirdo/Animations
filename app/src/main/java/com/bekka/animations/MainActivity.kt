@@ -3,7 +3,6 @@ package com.bekka.animations
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -32,10 +31,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bekka.animations.advanced_animated.AdvancedAnimationActivity
 import com.bekka.animations.animated_specs.AnimatedSpecsAnimationActivity
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
 import com.bekka.animations.content_size.ContentSizeAnimationActivity
 import com.bekka.animations.data.DataProvider
+import com.bekka.animations.data.DataProvider.ADVANCED_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_SPEC_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_VISIBILITY
 import com.bekka.animations.data.DataProvider.CONTENT_SIZE_ANIMATION
@@ -80,7 +81,7 @@ fun AnimationItem(
 ){
     Card(
         shape = RoundedCornerShape(size = 12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.Red)
+        colors = CardDefaults.cardColors(containerColor = Color.Gray)
     ) {
         Row(
             modifier = Modifier
@@ -112,6 +113,7 @@ private fun Context.navigateToAnimation(it: AnimationModel){
         SIMPLE_ANIMATION -> navigateToSomewhere(SimpleAnimationActivity::class)
         TRANSITION_ANIMATION -> navigateToSomewhere(TransitionAnimationActivity::class)
         ANIMATED_SPEC_ANIMATION -> navigateToSomewhere(AnimatedSpecsAnimationActivity::class)
+        ADVANCED_ANIMATION -> navigateToSomewhere(AdvancedAnimationActivity::class)
     }
 }
 
