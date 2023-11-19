@@ -19,17 +19,17 @@ object DataProvider {
     const val ANIMATED_VISIBILITY = "Animated Visibility"
     const val CONTENT_SIZE_ANIMATION = "Content Size Animation"
     const val GESTURE_ANIMATION = "Gesture Animation"
-    const val SIMPLE_ANIMATION = "Simple Animation"
+    const val VALUE_BASED_ANIMATION = "Value-Based Animation"
     const val TRANSITION_ANIMATION = "Transition Animation"
     const val ANIMATED_SPEC_ANIMATION = "Animated Spec"
     const val ADVANCED_ANIMATION = "Advanced Animation"
     const val SAVED_ITEMS = "Saved Items"
 
     val optionsList = mutableListOf(
+        AnimationModel(icon = Icons.Outlined.AccountBox, option = VALUE_BASED_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Favorite, option = ANIMATED_VISIBILITY),
         AnimationModel(icon = Icons.Outlined.Add, option = CONTENT_SIZE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.List, option = GESTURE_ANIMATION),
-        AnimationModel(icon = Icons.Outlined.AccountBox, option = SIMPLE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Build, option = ANIMATED_SPEC_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Clear, option = ADVANCED_ANIMATION),

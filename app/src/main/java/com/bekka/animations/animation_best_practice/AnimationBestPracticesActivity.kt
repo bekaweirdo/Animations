@@ -36,32 +36,32 @@ class AnimationBestPracticesActivity : ComponentActivity() {
 
 @Composable
 fun AccessibleAnimationDemo() {
-    val accessibilityManager = LocalAccessibilityManager.current
-    val reduceMotion = accessibilityManager?.isReduceMotionEnabled ?: false
-
-    var sizeState by remember { mutableStateOf(100.dp) }
-    val size by animateDpAsState(
-        targetValue = sizeState,
-        animationSpec = if (reduceMotion) {
-            spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessLow)
-        } else {
-            tween(durationMillis = 1000)
-        }, label = ""
-    )
-
-    LaunchedEffect(Unit) {
-        while (true) {
-            sizeState = if (sizeState == 100.dp) 200.dp else 100.dp
-            delay(1000) // delay between size toggles
-        }
-    }
-
-    Box(
-        modifier = Modifier
-            .size(size)
-            .background(Color.Magenta)
-            .fillMaxSize()
-    )
+//    val accessibilityManager = LocalAccessibilityManager.current
+//    val reduceMotion = accessibilityManager?.isReduceMotionEnabled ?: false
+//
+//    var sizeState by remember { mutableStateOf(100.dp) }
+//    val size by animateDpAsState(
+//        targetValue = sizeState,
+//        animationSpec = if (reduceMotion) {
+//            spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessLow)
+//        } else {
+//            tween(durationMillis = 1000)
+//        }, label = ""
+//    )
+//
+//    LaunchedEffect(Unit) {
+//        while (true) {
+//            sizeState = if (sizeState == 100.dp) 200.dp else 100.dp
+//            delay(1000) // delay between size toggles
+//        }
+//    }
+//
+//    Box(
+//        modifier = Modifier
+//            .size(size)
+//            .background(Color.Magenta)
+//            .fillMaxSize()
+//    )
 }
 
 @Composable

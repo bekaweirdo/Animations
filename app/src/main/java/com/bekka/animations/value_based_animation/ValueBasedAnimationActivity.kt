@@ -1,4 +1,4 @@
-package com.bekka.animations.simple_animation
+package com.bekka.animations.value_based_animation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,17 +14,21 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,12 +40,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bekka.animations.R
 import com.bekka.animations.ui.theme.AnimationsTheme
 
-class SimpleAnimationActivity : ComponentActivity() {
+class ValueBasedAnimationActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,28 +64,79 @@ class SimpleAnimationActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        // Visibility animation example
-                        var isVisible by remember { mutableStateOf(true) }
-                        AnimatedVisibilityExample(isVisible) { isVisible = !isVisible }
-
+                        // Float animation example
+                        BoxSizeChangeExample()
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        // Float animation example
                         FloatAnimationExample()
-
                         Spacer(modifier = Modifier.height(16.dp))
 
                         // Color animation example
                         ColorAnimationExample()
-
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        // Size animation example
+                        // Dp animation example
+                        DpAnimationExample()
+                        Spacer(modifier = Modifier.height(16.dp))
+
                         SizeAnimationExample()
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        // Visibility animation example
+                        var isVisible by remember { mutableStateOf(true) }
+                        AnimatedVisibilityExample(isVisible) { isVisible = !isVisible }
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+fun BoxSizeChangeExample() {
+    var size by remember {
+        mutableStateOf(0.5f)
+    }
+
+    val animateScale by animateFloatAsState(
+        targetValue = size,
+        animationSpec = tween(durationMillis = 3000),
+        label = "BoxSizeChange"
+    )
+
+    Box(
+        modifier = Modifier
+            .scale(scale = animateScale)
+            .size(size = 56.dp)
+            .background(color = Color.Magenta)
+            .clickable {
+                size = if (size == 2f) 0.5f else 2f
+            }
+    )
+}
+
+@Composable
+fun ColorAnimationExample() {
+    var color by remember {
+        mutableStateOf(Color.Red)
+    }
+
+    val animateColor by animateColorAsState(
+        targetValue = color,
+        animationSpec = tween(durationMillis = 3000),
+        label = "ColorAnimationExample"
+    )
+
+    Box(
+        modifier = Modifier
+            .size(size = 56.dp)
+            .background(color = animateColor)
+            .clickable {
+                color = if (color == Color.Red) Color.Yellow else Color.Red
+            },
+        contentAlignment = Alignment.Center
+    ) {
+        Text(text = "Tap")
     }
 }
 
@@ -109,7 +168,10 @@ fun AnimatedVisibilityExample(isVisible: Boolean, onToggleVisibility: () -> Unit
 @Composable
 fun FloatAnimationExample() {
     var alpha by remember { mutableStateOf(1f) }
-    val animatedAlpha by animateFloatAsState(targetValue = alpha, label = "")
+    val animatedAlpha by animateFloatAsState(
+        targetValue = alpha,
+        label = ""
+    )
 
     Text(
         text = "Fade me",
@@ -122,24 +184,39 @@ fun FloatAnimationExample() {
     )
 }
 
+enum class AndroidPosition {
+    Start, Finish
+}
 @Composable
-fun ColorAnimationExample() {
-    var isRed by remember { mutableStateOf(true) }
-    val animatedColor by animateColorAsState(
-        targetValue = if (isRed) Color.Red else Color.Green,
-        animationSpec = tween(durationMillis = 1000), label = ""
-    )
+fun DpAnimationExample() {
 
+    var bikeState by remember { mutableStateOf(AndroidPosition.Start) }
+
+    val offsetAnimation: Dp by animateDpAsState(
+        targetValue = if (bikeState == AndroidPosition.Start) 5.dp else 300.dp,
+        label = "DpAnimationExample",
+        animationSpec = tween(durationMillis = 3000)
+    )
     Box(
         modifier = Modifier
-            .size(100.dp)
-            .background(animatedColor)
-            .clickable(onClick = { isRed = !isRed })
-            .padding(8.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Tap to change color")
+            .fillMaxWidth()
+            .wrapContentHeight()
+    )  {
+        Image(
+            painter = painterResource(R.drawable.ic_launcher_foreground),
+            contentDescription = null,
+            modifier = Modifier
+                .height(90.dp)
+                .absoluteOffset(x = offsetAnimation)
+                .clickable {
+                    bikeState = when (bikeState) {
+                        AndroidPosition.Start -> AndroidPosition.Finish
+                        AndroidPosition.Finish -> AndroidPosition.Start
+                    }
+                }
+        )
     }
+
 }
 
 @Composable

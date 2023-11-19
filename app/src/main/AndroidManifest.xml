@@ -27,7 +27,7 @@
         <activity android:name=".animated_visibility.AnimatedVisibilityActivity"
             android:theme="@style/Theme.Animations" />
 
-        <activity android:name=".simple_animation.SimpleAnimationActivity"
+        <activity android:name=".value_based_animation.ValueBasedAnimationActivity"
             android:theme="@style/Theme.Animations" />
 
         <activity android:name=".transition_animation.TransitionAnimationActivity"

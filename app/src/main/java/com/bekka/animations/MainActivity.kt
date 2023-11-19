@@ -41,11 +41,11 @@ import com.bekka.animations.data.DataProvider.ANIMATED_SPEC_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_VISIBILITY
 import com.bekka.animations.data.DataProvider.CONTENT_SIZE_ANIMATION
 import com.bekka.animations.data.DataProvider.GESTURE_ANIMATION
-import com.bekka.animations.data.DataProvider.SIMPLE_ANIMATION
 import com.bekka.animations.data.DataProvider.TRANSITION_ANIMATION
+import com.bekka.animations.data.DataProvider.VALUE_BASED_ANIMATION
 import com.bekka.animations.data.model.AnimationModel
 import com.bekka.animations.gesture.GestureAnimationActivity
-import com.bekka.animations.simple_animation.SimpleAnimationActivity
+import com.bekka.animations.value_based_animation.ValueBasedAnimationActivity
 import com.bekka.animations.transition_animation.TransitionAnimationActivity
 import com.bekka.animations.ui.theme.AnimationsTheme
 import kotlin.reflect.KClass
@@ -110,7 +110,7 @@ private fun Context.navigateToAnimation(it: AnimationModel){
         ANIMATED_VISIBILITY -> navigateToSomewhere(AnimatedVisibilityActivity::class)
         CONTENT_SIZE_ANIMATION -> navigateToSomewhere(ContentSizeAnimationActivity::class)
         GESTURE_ANIMATION -> navigateToSomewhere(GestureAnimationActivity::class)
-        SIMPLE_ANIMATION -> navigateToSomewhere(SimpleAnimationActivity::class)
+        VALUE_BASED_ANIMATION -> navigateToSomewhere(ValueBasedAnimationActivity::class)
         TRANSITION_ANIMATION -> navigateToSomewhere(TransitionAnimationActivity::class)
         ANIMATED_SPEC_ANIMATION -> navigateToSomewhere(AnimatedSpecsAnimationActivity::class)
         ADVANCED_ANIMATION -> navigateToSomewhere(AdvancedAnimationActivity::class)
