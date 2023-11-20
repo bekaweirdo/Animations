@@ -44,6 +44,9 @@
 
         <activity android:name=".advanced_animated.AdvancedAnimationActivity"
             android:theme="@style/Theme.Animations" />
+
+        <activity android:name=".vector_animated.VectorAnimationActivity"
+            android:theme="@style/Theme.Animations" />
     </application>
 
 </manifest>

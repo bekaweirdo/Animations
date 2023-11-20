@@ -57,13 +57,10 @@ class AnimatedVisibilityActivity : ComponentActivity() {
                         AnimatedVisibility(
                             visible = visible,
                             enter = slideInVertically {
-                                // Slide in from 40 dp from the top.
                                 with(density) { -40.dp.roundToPx() }
                             } + expandVertically(
-                                // Expand from the top.
                                 expandFrom = Alignment.Top
                             ) + fadeIn(
-                                // Fade in with the initial alpha of 0.3f.
                                 initialAlpha = 0.3f
                             ),
                             exit = slideOutVertically() + shrinkVertically() + fadeOut()

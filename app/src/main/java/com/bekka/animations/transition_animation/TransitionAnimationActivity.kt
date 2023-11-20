@@ -32,7 +32,6 @@ class TransitionAnimationActivity : ComponentActivity() {
 
 @Composable
 fun AnimatedVisibilityScreen() {
-    // This state controls the visibility
     var visible by remember { mutableStateOf(true) }
 
     Column(
