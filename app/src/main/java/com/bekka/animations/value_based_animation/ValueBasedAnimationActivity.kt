@@ -34,6 +34,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -95,7 +96,7 @@ class ValueBasedAnimationActivity : ComponentActivity() {
 @Composable
 fun BoxSizeChangeExample() {
     var size by remember {
-        mutableStateOf(0.5f)
+        mutableFloatStateOf(0.5f)
     }
 
     val animateScale by animateFloatAsState(
@@ -167,7 +168,7 @@ fun AnimatedVisibilityExample(isVisible: Boolean, onToggleVisibility: () -> Unit
 
 @Composable
 fun FloatAnimationExample() {
-    var alpha by remember { mutableStateOf(1f) }
+    var alpha by remember { mutableFloatStateOf(1f) }
     val animatedAlpha by animateFloatAsState(
         targetValue = alpha,
         label = ""
