@@ -3,17 +3,12 @@ package com.bekka.animations.value_based_animation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -82,10 +77,6 @@ class ValueBasedAnimationActivity : ComponentActivity() {
 
                         SizeAnimationExample()
                         Spacer(modifier = Modifier.height(16.dp))
-
-                        // Visibility animation example
-                        var isVisible by remember { mutableStateOf(true) }
-                        AnimatedVisibilityExample(isVisible) { isVisible = !isVisible }
                     }
                 }
             }
@@ -138,31 +129,6 @@ fun ColorAnimationExample() {
         contentAlignment = Alignment.Center
     ) {
         Text(text = "Tap")
-    }
-}
-
-@Composable
-fun AnimatedVisibilityExample(isVisible: Boolean, onToggleVisibility: () -> Unit) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        AnimatedVisibility(
-            visible = isVisible,
-            enter = fadeIn() + expandVertically(),
-            exit = fadeOut() + shrinkVertically()
-        ) {
-            Text(
-                text = "Here me out, I'm gonna disappear",
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.primary)
-                    .padding(8.dp)
-            )
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "Tap to toggle",
-            modifier = Modifier
-                .clickable(onClick = onToggleVisibility)
-                .padding(8.dp)
-        )
     }
 }
 

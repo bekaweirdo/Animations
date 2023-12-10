@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalAccessibilityManager
 import androidx.compose.ui.unit.dp
+import com.bekka.animations.ui.theme.AnimationsTheme
 import kotlinx.coroutines.delay
 
 class AnimationBestPracticesActivity : ComponentActivity() {
@@ -62,12 +63,5 @@ fun AccessibleAnimationDemo() {
 //            .background(Color.Magenta)
 //            .fillMaxSize()
 //    )
-}
-
-@Composable
-fun AnimationsTheme(content: @Composable () -> Unit) {
-    MaterialTheme {
-        content()
-    }
 }
 
