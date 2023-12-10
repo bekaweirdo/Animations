@@ -3,6 +3,7 @@ package com.bekka.animations.twoWay_convertor
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.AnimationVector4D
 import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.animation.core.animateFloatAsState
@@ -15,12 +16,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -40,7 +43,6 @@ class TwoWayConvertorActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AnimationsTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -73,7 +75,8 @@ class TwoWayConvertorActivity : ComponentActivity() {
     @Composable
     fun AnimatedBoxWithRotation() {
         var boxState by remember { mutableStateOf(BoxData(50.dp, Color.Blue)) }
-        var rotateState by remember { mutableFloatStateOf(0f) } // Rotation state
+        var rotateState by remember { mutableFloatStateOf(0f) }
+        var textAppearance by remember { mutableStateOf(false) }
 
         val animatedBoxData by animateValueAsState(
             targetValue = boxState,
@@ -86,31 +89,38 @@ class TwoWayConvertorActivity : ComponentActivity() {
             animationSpec = tween(durationMillis = 2000), label = ""
         )
 
+        LaunchedEffect(rotation){
+            if(rotation == 225f) textAppearance = true
+        }
+
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            AnimatedVisibility(visible = textAppearance) {
+                Text(text = "Welcome droids")
+                Spacer(Modifier.height(80.dp))
+            }
+
             Box(
                 modifier = Modifier
                     .size(animatedBoxData.size)
                     .graphicsLayer {
-                        rotationZ = rotation // Apply rotation
+                        rotationZ = rotation
                     }
                     .background(animatedBoxData.color)
             )
 
             Spacer(Modifier.height(10.dp))
 
-            Button(onClick = {
-                boxState = BoxData(200.dp, Color.Magenta) // New target values for the animation
+            Button(
+                modifier = Modifier.padding(top = 30.dp),
+                onClick = {
+                boxState = BoxData(200.dp, Color.Magenta)
                 rotateState += 225f
             }) {
                 Text("Animate")
             }
         }
     }
-
-
-
-
 }
