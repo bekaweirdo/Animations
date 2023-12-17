@@ -26,10 +26,12 @@ object DataProvider {
     const val ADVANCED_ANIMATION = "Advanced Animation"
     const val VECTOR_BASED_ANIMATION = "Vector Drawable Animation"
     const val TWO_WAY_CONVERTOR_ANIMATION = "TwoWayConvertor Animation"
+    const val ANIMATED_CONTENT = "AnimatedContent Animation"
 
     val optionsList = mutableListOf(
         AnimationModel(icon = Icons.Outlined.AccountBox, option = VALUE_BASED_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Favorite, option = ANIMATED_VISIBILITY),
+        AnimationModel(icon = Icons.Outlined.Notifications, option = ANIMATED_CONTENT),
         AnimationModel(icon = Icons.Outlined.Add, option = CONTENT_SIZE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Build, option = ANIMATED_SPEC_ANIMATION),

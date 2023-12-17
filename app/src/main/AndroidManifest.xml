@@ -50,6 +50,9 @@
 
         <activity android:name=".twoWay_convertor.TwoWayConvertorActivity"
             android:theme="@style/Theme.Animations" />
+
+        <activity android:name=".animated_content.AnimatedContentActivity"
+            android:theme="@style/Theme.Animations" />
     </application>
 
 </manifest>

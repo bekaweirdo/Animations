@@ -63,13 +63,11 @@ fun AnimatedVisibilityScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // AnimatedVisibility will automatically animate the visibility changes
         AnimatedVisibility(
             visible = visible,
             enter = fadeIn(animationSpec = tween(1000)) + expandIn(animationSpec = tween(1000)),
             exit = fadeOut(animationSpec = tween(1000)) + shrinkOut(animationSpec = tween(1000))
         ) {
-            // This is the content that will appear and disappear
             Text(
                 text = "Hello my fellow friends from curiosity",
                 style = MaterialTheme.typography.headlineMedium
@@ -78,7 +76,6 @@ fun AnimatedVisibilityScreen() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Button to toggle visibility
         Button(onClick = { visible = !visible }) {
             Text("Toggle Visibility")
         }
@@ -96,7 +93,6 @@ enum class ButtonState {
 fun AnimatedButton() {
     var buttonState by remember { mutableStateOf(ButtonState.Idle) }
 
-    // Cycle through the states on button click
     val onClick = {
         buttonState = when (buttonState) {
             ButtonState.Idle -> ButtonState.Loading
@@ -105,7 +101,6 @@ fun AnimatedButton() {
         }
     }
 
-    // Define the transition for the background color
     val transition = updateTransition(targetState = buttonState, label = "ButtonTransition")
     val backgroundColor by transition.animateColor(label = "Background") { state ->
         when (state) {

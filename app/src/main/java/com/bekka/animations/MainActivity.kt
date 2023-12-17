@@ -32,11 +32,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bekka.animations.advanced_animated.AdvancedAnimationActivity
+import com.bekka.animations.animated_content.AnimatedContentActivity
 import com.bekka.animations.animated_specs.AnimatedSpecsAnimationActivity
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
 import com.bekka.animations.content_size.ContentSizeAnimationActivity
 import com.bekka.animations.data.DataProvider
 import com.bekka.animations.data.DataProvider.ADVANCED_ANIMATION
+import com.bekka.animations.data.DataProvider.ANIMATED_CONTENT
 import com.bekka.animations.data.DataProvider.ANIMATED_SPEC_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_VISIBILITY
 import com.bekka.animations.data.DataProvider.CONTENT_SIZE_ANIMATION
@@ -120,6 +122,7 @@ private fun Context.navigateToAnimation(it: AnimationModel){
         ADVANCED_ANIMATION -> navigateToSomewhere(AdvancedAnimationActivity::class)
         VECTOR_BASED_ANIMATION -> navigateToSomewhere(VectorAnimationActivity::class)
         TWO_WAY_CONVERTOR_ANIMATION -> navigateToSomewhere(TwoWayConvertorActivity::class)
+        ANIMATED_CONTENT -> navigateToSomewhere(AnimatedContentActivity::class)
     }
 }
 
