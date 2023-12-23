@@ -1,4 +1,4 @@
-package com.bekka.animations.twoWay_convertor
+package com.bekka.animations.two_way_convertor
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -48,7 +48,7 @@
         <activity android:name=".vector_animated.VectorAnimationActivity"
             android:theme="@style/Theme.Animations" />
 
-        <activity android:name=".twoWay_convertor.TwoWayConvertorActivity"
+        <activity android:name=".two_way_convertor.TwoWayConvertorActivity"
             android:theme="@style/Theme.Animations" />
 
         <activity android:name=".animated_content.AnimatedContentActivity"

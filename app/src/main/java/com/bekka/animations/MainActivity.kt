@@ -51,7 +51,7 @@ import com.bekka.animations.data.model.AnimationModel
 import com.bekka.animations.gesture.GestureAnimationActivity
 import com.bekka.animations.value_based_animation.ValueBasedAnimationActivity
 import com.bekka.animations.transition_animation.TransitionAnimationActivity
-import com.bekka.animations.twoWay_convertor.TwoWayConvertorActivity
+import com.bekka.animations.two_way_convertor.TwoWayConvertorActivity
 import com.bekka.animations.ui.theme.AnimationsTheme
 import com.bekka.animations.vector_animated.VectorAnimationActivity
 import kotlin.reflect.KClass
