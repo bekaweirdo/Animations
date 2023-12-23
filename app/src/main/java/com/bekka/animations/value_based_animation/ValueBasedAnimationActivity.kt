@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -11,6 +12,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,6 +26,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -60,6 +63,7 @@ class ValueBasedAnimationActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier.fillMaxSize()
                     ) {
+                        Spacer(modifier = Modifier.height(50.dp))
                         // Float animation example
                         BoxSizeChangeExample()
                         Spacer(modifier = Modifier.height(16.dp))
@@ -77,6 +81,9 @@ class ValueBasedAnimationActivity : ComponentActivity() {
 
                         SizeAnimationExample()
                         Spacer(modifier = Modifier.height(16.dp))
+
+                        // ContentSize example
+                        ExpandableContentAnimation()
                     }
                 }
             }
@@ -203,5 +210,45 @@ fun SizeAnimationExample() {
             .clickable(onClick = { expanded = !expanded })
     ) {
         Text(text = "Size +/-")
+    }
+}
+
+@Composable
+fun ExpandableContentAnimation() {
+    var expanded by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Button(onClick = { expanded = !expanded }) {
+            Text(if (expanded) "Collapse" else "Expand")
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Box(
+            modifier = Modifier
+                .border(1.dp, MaterialTheme.colorScheme.onSurface)
+                .padding(16.dp)
+                .animateContentSize(animationSpec = tween(600))
+        ) {
+            Column {
+                Text(
+                    "Tap the button to\nsee more content!",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                if (expanded) {
+                    Text(
+                        "This is the extra content that appears when the box is expanded. " +
+                                "You can collapse this content by tapping the button again.",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                }
+            }
+        }
     }
 }

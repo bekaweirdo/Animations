@@ -18,7 +18,6 @@ import com.bekka.animations.data.model.AnimationModel
 object DataProvider {
 
     const val ANIMATED_VISIBILITY = "Animated Visibility"
-    const val CONTENT_SIZE_ANIMATION = "Content Size Animation"
     const val GESTURE_ANIMATION = "Gesture Animation"
     const val VALUE_BASED_ANIMATION = "Value-Based Animation"
     const val TRANSITION_ANIMATION = "Transition Animation"
@@ -30,7 +29,6 @@ object DataProvider {
 
     val optionsList = mutableListOf(
         AnimationModel(icon = Icons.Outlined.AccountBox, option = VALUE_BASED_ANIMATION),
-        AnimationModel(icon = Icons.Outlined.Add, option = CONTENT_SIZE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Build, option = ANIMATED_SPEC_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Face, option = ANIMATED_VISIBILITY),
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),

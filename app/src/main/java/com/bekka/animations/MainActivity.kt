@@ -35,13 +35,11 @@ import com.bekka.animations.advanced_animated.AdvancedAnimationActivity
 import com.bekka.animations.animated_content.AnimatedContentActivity
 import com.bekka.animations.animated_specs.AnimatedSpecsAnimationActivity
 import com.bekka.animations.animated_visibility.AnimatedVisibilityActivity
-import com.bekka.animations.content_size.ContentSizeAnimationActivity
 import com.bekka.animations.data.DataProvider
 import com.bekka.animations.data.DataProvider.ADVANCED_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_CONTENT
 import com.bekka.animations.data.DataProvider.ANIMATED_SPEC_ANIMATION
 import com.bekka.animations.data.DataProvider.ANIMATED_VISIBILITY
-import com.bekka.animations.data.DataProvider.CONTENT_SIZE_ANIMATION
 import com.bekka.animations.data.DataProvider.GESTURE_ANIMATION
 import com.bekka.animations.data.DataProvider.TRANSITION_ANIMATION
 import com.bekka.animations.data.DataProvider.TWO_WAY_CONVERTOR_ANIMATION
@@ -49,10 +47,10 @@ import com.bekka.animations.data.DataProvider.VALUE_BASED_ANIMATION
 import com.bekka.animations.data.DataProvider.VECTOR_BASED_ANIMATION
 import com.bekka.animations.data.model.AnimationModel
 import com.bekka.animations.gesture.GestureAnimationActivity
-import com.bekka.animations.value_based_animation.ValueBasedAnimationActivity
 import com.bekka.animations.transition_animation.TransitionAnimationActivity
 import com.bekka.animations.two_way_convertor.TwoWayConvertorActivity
 import com.bekka.animations.ui.theme.AnimationsTheme
+import com.bekka.animations.value_based_animation.ValueBasedAnimationActivity
 import com.bekka.animations.vector_animated.VectorAnimationActivity
 import kotlin.reflect.KClass
 
@@ -61,14 +59,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AnimationsTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(space = 24.dp), // gap between items
-                        contentPadding = PaddingValues(all = 22.dp) // padding for LazyColumn layout
+                        verticalArrangement = Arrangement.spacedBy(space = 24.dp),
+                        contentPadding = PaddingValues(all = 22.dp)
                     ) {
                         items(DataProvider.optionsList) { item ->
                             AnimationItem(item)
@@ -114,7 +111,6 @@ fun AnimationItem(
 private fun Context.navigateToAnimation(it: AnimationModel){
     when(it.option){
         ANIMATED_VISIBILITY -> navigateToSomewhere(AnimatedVisibilityActivity::class)
-        CONTENT_SIZE_ANIMATION -> navigateToSomewhere(ContentSizeAnimationActivity::class)
         GESTURE_ANIMATION -> navigateToSomewhere(GestureAnimationActivity::class)
         VALUE_BASED_ANIMATION -> navigateToSomewhere(ValueBasedAnimationActivity::class)
         TRANSITION_ANIMATION -> navigateToSomewhere(TransitionAnimationActivity::class)

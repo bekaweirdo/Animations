@@ -33,9 +33,6 @@
         <activity android:name=".transition_animation.TransitionAnimationActivity"
             android:theme="@style/Theme.Animations" />
 
-        <activity android:name=".content_size.ContentSizeAnimationActivity"
-            android:theme="@style/Theme.Animations" />
-
         <activity android:name=".gesture.GestureAnimationActivity"
             android:theme="@style/Theme.Animations" />
 
