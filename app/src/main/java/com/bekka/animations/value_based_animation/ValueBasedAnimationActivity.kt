@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bekka.animations.R
+import com.bekka.animations.data.DataProvider.AndroidPosition
 import com.bekka.animations.ui.theme.AnimationsTheme
 
 class ValueBasedAnimationActivity : ComponentActivity() {
@@ -158,9 +159,6 @@ fun ColorAnimationExample() {
     }
 }
 
-enum class AndroidPosition {
-    Start, Finish
-}
 @Composable
 fun DpAnimationExample() {
 

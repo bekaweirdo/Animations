@@ -38,4 +38,8 @@ object DataProvider {
         AnimationModel(icon = Icons.Outlined.Favorite, option = VECTOR_BASED_ANIMATION),
         AnimationModel(icon = Icons.Outlined.List, option = GESTURE_ANIMATION)
     )
+
+    enum class AndroidPosition {
+        Start, Finish
+    }
 }

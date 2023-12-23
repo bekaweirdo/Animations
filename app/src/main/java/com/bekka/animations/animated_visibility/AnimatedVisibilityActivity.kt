@@ -11,7 +11,6 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,8 +29,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bekka.animations.ui.theme.AnimationsTheme
@@ -46,43 +45,38 @@ class AnimatedVisibilityActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var visible by remember { mutableStateOf(false) }
+                    var firstText by remember { mutableStateOf(false) }
+                    var secondText by remember { mutableStateOf(false) }
 
                     val density = LocalDensity.current
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier.fillMaxSize()
-                    )  {
-                        // Visibility animation example
-                        var isVisible by remember { mutableStateOf(true) }
-                        AnimatedVisibilityExample(isVisible) { isVisible = !isVisible }
+                    ) {
+                        AnimatedVisibilityFirstText(
+                            isVisible = firstText
+                        )
 
                         Spacer(modifier = Modifier.height(26.dp))
-                        // Visibility animation example 2
-                        AnimatedVisibility(
-                            visible = visible,
-                            enter = slideInVertically {
-                                with(density) { -40.dp.roundToPx() }
-                            } + expandVertically(
-                                expandFrom = Alignment.Top
-                            ) + fadeIn(
-                                initialAlpha = 0.3f
-                            ),
-                            exit = slideOutVertically() + shrinkVertically() + fadeOut()
-                        ) {
-                            Text(
-                                "Space International",
-                                Modifier
-                                    .wrapContentSize(),
-                                fontSize = 30.sp
 
-                            )
-                        }
+                        AnimatedVisibilitySecondText(
+                            isVisible = secondText,
+                            density = density
+                        )
+
+                        Spacer(modifier = Modifier.height(26.dp))
 
                         Button(
-                            onClick = { visible = !visible }) {
-                            Text(text = "Click me")
+                            onClick = { firstText = !firstText }) {
+                            Text(text = if (firstText) "Hide Text 1" else "Show Text 1")
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Button(
+                            onClick = { secondText = !secondText }) {
+                            Text(text = if (secondText) "Hide Text 2" else "Show Text 2")
                         }
                     }
                 }
@@ -91,7 +85,7 @@ class AnimatedVisibilityActivity : ComponentActivity() {
     }
 
     @Composable
-    fun AnimatedVisibilityExample(isVisible: Boolean, onToggleVisibility: () -> Unit) {
+    fun AnimatedVisibilityFirstText(isVisible: Boolean) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AnimatedVisibility(
                 visible = isVisible,
@@ -101,17 +95,33 @@ class AnimatedVisibilityActivity : ComponentActivity() {
                 Text(
                     text = "Here me out, I'm gonna disappear",
                     modifier = Modifier
-                        .background(MaterialTheme.colorScheme.primary)
+                        .background(MaterialTheme.colorScheme.error)
                         .padding(8.dp)
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+
+    @Composable
+    fun AnimatedVisibilitySecondText(isVisible: Boolean, density: Density) {
+        AnimatedVisibility(
+            visible = isVisible,
+            enter = slideInVertically {
+                with(density) { -40.dp.roundToPx() }
+            } + expandVertically(
+                expandFrom = Alignment.Top
+            ) + fadeIn(
+                initialAlpha = 0.3f
+            ),
+            exit = slideOutVertically() + shrinkVertically() + fadeOut()
+        ) {
             Text(
-                text = "Tap to toggle",
-                modifier = Modifier
-                    .background(Color.Green)
-                    .clickable(onClick = onToggleVisibility)
-                    .padding(8.dp)
+                "Happy New Year 🎉🎊",
+                Modifier
+                    .wrapContentSize(),
+                fontSize = 30.sp
+
             )
         }
     }
