@@ -34,7 +34,7 @@ object DataProvider {
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Notifications, option = ANIMATED_CONTENT),
         AnimationModel(icon = Icons.Outlined.Done, option = TWO_WAY_CONVERTOR_ANIMATION),
-        AnimationModel(icon = Icons.Outlined.Clear, option = ADVANCED_ANIMATION),
+//        AnimationModel(icon = Icons.Outlined.Clear, option = ADVANCED_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Favorite, option = VECTOR_BASED_ANIMATION),
         AnimationModel(icon = Icons.Outlined.List, option = GESTURE_ANIMATION)
     )
