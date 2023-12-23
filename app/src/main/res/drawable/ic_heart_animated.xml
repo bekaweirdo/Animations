@@ -1,6 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/ic_heart">
-    <target
-        android:name="heart"
-        android:animation="@animator/scale" />
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <!-- Vector Drawable -->
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="48dp"
+            android:height="48dp"
+            android:viewportWidth="48"
+            android:viewportHeight="48">
+            <group android:name="left_half">
+                <path
+                    android:fillColor="#FF0000"
+                    android:pathData="M24,42.3l-2.9-2.64C10.8,30.72 4,24.56 4,17 4,10.84 8.84,6 15,6c3.48,0 6.82,1.62 9,4.18"/>
+            </group>
+            <group android:name="right_half">
+                <path
+                    android:fillColor="#FF0000"
+                    android:pathData="M24,42.3l2.9-2.64C37.2,30.72 44,24.56 44,17 44,10.84 39.16,6 33,6c-3.48,0 -6.82,1.62 -9,4.18"/>
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="left_half">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-5"
+                    android:valueType="floatType"
+                    android:repeatMode="reverse"
+                    android:repeatCount="infinite"/>
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="5"
+                    android:valueType="floatType"
+                    android:repeatMode="reverse"
+                    android:repeatCount="infinite"/>
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="-10"
+                    android:valueType="floatType"
+                    android:repeatMode="reverse"
+                    android:repeatCount="infinite"/>
+            </set>
+
+        </aapt:attr>
+    </target>
+
+    <target android:name="right_half">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="5"
+                    android:valueType="floatType"
+                    android:repeatMode="reverse"
+                    android:repeatCount="infinite"/>
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-5"
+                    android:valueType="floatType"
+                    android:repeatMode="reverse"
+                    android:repeatCount="infinite"/>
+                <objectAnimator
+                    android:duration="1000"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="10"
+                    android:valueType="floatType"
+                    android:repeatMode="reverse"
+                    android:repeatCount="infinite"/>
+            </set>
+
+        </aapt:attr>
+    </target>
+
 </animated-vector>

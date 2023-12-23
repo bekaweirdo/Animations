@@ -32,12 +32,12 @@ object DataProvider {
         AnimationModel(icon = Icons.Outlined.AccountBox, option = VALUE_BASED_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Add, option = CONTENT_SIZE_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Build, option = ANIMATED_SPEC_ANIMATION),
-        AnimationModel(icon = Icons.Outlined.Favorite, option = ANIMATED_VISIBILITY),
+        AnimationModel(icon = Icons.Outlined.Face, option = ANIMATED_VISIBILITY),
         AnimationModel(icon = Icons.Outlined.AddCircle, option = TRANSITION_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Notifications, option = ANIMATED_CONTENT),
         AnimationModel(icon = Icons.Outlined.Done, option = TWO_WAY_CONVERTOR_ANIMATION),
         AnimationModel(icon = Icons.Outlined.Clear, option = ADVANCED_ANIMATION),
-//        AnimationModel(icon = Icons.Outlined.List, option = GESTURE_ANIMATION),
-//        AnimationModel(icon = Icons.Outlined.Face, option = VECTOR_BASED_ANIMATION)
+        AnimationModel(icon = Icons.Outlined.Favorite, option = VECTOR_BASED_ANIMATION),
+//        AnimationModel(icon = Icons.Outlined.List, option = GESTURE_ANIMATION)
     )
 }

@@ -33,7 +33,7 @@ class VectorAnimationActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AnimatedHeartDrawable()
+                    AnimatedHeart()
                 }
             }
         }
@@ -41,15 +41,14 @@ class VectorAnimationActivity : ComponentActivity() {
 }
 @OptIn(ExperimentalAnimationGraphicsApi::class)
 @Composable
-fun AnimatedHeartDrawable() {
-    val image = AnimatedImageVector.animatedVectorResource(R.drawable.ic_heart_animated)
+fun AnimatedHeart() {
+    val animatedVector = AnimatedImageVector.animatedVectorResource(R.drawable.ic_heart_animated)
     var atEnd by remember { mutableStateOf(false) }
-
     Image(
-        painter = rememberAnimatedVectorPainter(image, atEnd),
-        contentDescription = "Heart",
+        painter = rememberAnimatedVectorPainter(animatedVector, atEnd),
+        contentDescription = "Heart animation",
         modifier = Modifier
+            .size(200.dp)
             .clickable { atEnd = !atEnd }
-            .size(48.dp)
     )
 }
