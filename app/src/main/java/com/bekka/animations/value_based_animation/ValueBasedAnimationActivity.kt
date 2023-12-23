@@ -108,6 +108,25 @@ fun BoxSizeChangeExample() {
 }
 
 @Composable
+fun FloatAnimationExample() {
+    var alpha by remember { mutableFloatStateOf(1f) }
+    val animatedAlpha by animateFloatAsState(
+        targetValue = alpha,
+        label = "AlphaChange"
+    )
+
+    Text(
+        text = "Fade me",
+        fontSize = 20.sp,
+        modifier = Modifier
+            .alpha(animatedAlpha)
+            .clickable(onClick = { alpha = if (alpha == 1f) 0f else 1f })
+            .background(Color.Gray)
+            .padding(16.dp)
+    )
+}
+
+@Composable
 fun ColorAnimationExample() {
     var color by remember {
         mutableStateOf(Color.Red)
@@ -132,37 +151,18 @@ fun ColorAnimationExample() {
     }
 }
 
-@Composable
-fun FloatAnimationExample() {
-    var alpha by remember { mutableFloatStateOf(1f) }
-    val animatedAlpha by animateFloatAsState(
-        targetValue = alpha,
-        label = ""
-    )
-
-    Text(
-        text = "Fade me",
-        fontSize = 20.sp,
-        modifier = Modifier
-            .alpha(animatedAlpha)
-            .clickable(onClick = { alpha = if (alpha == 1f) 0f else 1f })
-            .background(Color.Gray)
-            .padding(16.dp)
-    )
-}
-
 enum class AndroidPosition {
     Start, Finish
 }
 @Composable
 fun DpAnimationExample() {
 
-    var bikeState by remember { mutableStateOf(AndroidPosition.Start) }
+    var androidIconState by remember { mutableStateOf(AndroidPosition.Start) }
 
     val offsetAnimation: Dp by animateDpAsState(
-        targetValue = if (bikeState == AndroidPosition.Start) 5.dp else 300.dp,
+        targetValue = if (androidIconState == AndroidPosition.Start) 0.dp else 350.dp,
         label = "DpAnimationExample",
-        animationSpec = tween(durationMillis = 3000)
+        animationSpec = tween(durationMillis = 1500)
     )
     Box(
         modifier = Modifier
@@ -176,7 +176,7 @@ fun DpAnimationExample() {
                 .height(90.dp)
                 .absoluteOffset(x = offsetAnimation)
                 .clickable {
-                    bikeState = when (bikeState) {
+                    androidIconState = when (androidIconState) {
                         AndroidPosition.Start -> AndroidPosition.Finish
                         AndroidPosition.Finish -> AndroidPosition.Start
                     }
@@ -191,7 +191,8 @@ fun SizeAnimationExample() {
     var expanded by remember { mutableStateOf(false) }
     val animatedSize by animateDpAsState(
         targetValue = if (expanded) 200.dp else 50.dp,
-        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy), label = ""
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
+        label = "SizeAnimation"
     )
 
     Box(
@@ -201,6 +202,6 @@ fun SizeAnimationExample() {
             .background(Color.Blue)
             .clickable(onClick = { expanded = !expanded })
     ) {
-        Text(text = "Size change")
+        Text(text = "Size +/-")
     }
 }
