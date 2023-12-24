@@ -121,7 +121,6 @@ class AnimatedVisibilityActivity : ComponentActivity() {
                 Modifier
                     .wrapContentSize(),
                 fontSize = 30.sp
-
             )
         }
     }

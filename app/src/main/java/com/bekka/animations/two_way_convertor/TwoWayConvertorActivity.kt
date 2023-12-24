@@ -89,8 +89,8 @@ class TwoWayConvertorActivity : ComponentActivity() {
             animationSpec = tween(durationMillis = 2000), label = ""
         )
 
-        LaunchedEffect(rotation){
-            if(rotation == 225f) textAppearance = true
+        LaunchedEffect(rotation) {
+            if (rotation == 225f) textAppearance = true
         }
 
         Column(
@@ -116,9 +116,9 @@ class TwoWayConvertorActivity : ComponentActivity() {
             Button(
                 modifier = Modifier.padding(top = 30.dp),
                 onClick = {
-                boxState = BoxData(200.dp, Color.Magenta)
-                rotateState += 225f
-            }) {
+                    boxState = BoxData(200.dp, Color.Magenta)
+                    rotateState += 225f
+                }) {
                 Text("Animate")
             }
         }

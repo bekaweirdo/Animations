@@ -63,25 +63,20 @@ class TransitionAnimationActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AnimatedVisibilityScreen()
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        AnimatedImageWithTransition()
+                        Spacer(modifier = Modifier.height(20.dp))
+                        AnimatedButtonWithTransition()
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun AnimatedVisibilityScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        AnimatedImageWithTransition()
-        Spacer(modifier = Modifier.height(20.dp))
-        AnimatedButtonWithTransition()
     }
 }
 
